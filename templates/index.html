@@ -7,110 +7,121 @@
 
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
+      type="text/css"
+      href="{{ url_for('static',filename='styles.css') }}"
     />
 
     <title>CineMaster!</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">CineMaster</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/"
-                >My Movie List</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Suggested Movie for me</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-dark" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <div class="container">
-      <form action="/" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Movie Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="moviename"
-            name="moviename"
-          />
-          <div id="emailHelp" class="form-text">
-            Please Enter a valid movie name for better suggestion
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Category</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            name="category"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Rating</label>
-          <input
-            type="number"
-            class="form-control"
-            id="exampleInputPassword1"
-            name="rating"
-          />
-        </div>
-        <button type="submit" class="btn btn-outline-dark">>Submit</button>
-      </form>
+  {% if cnt == 0  %}
+  <body style="background-image: url('../static/back.jpg')">
+    <div class="topnav">
+      <a class="active" href="/">CineMaster</a>
+      <a href="/watchlist/Kwurt">My Watch List</a>
+      <a href="/error">Suggested for me</a>
+      <a href="/add">Add a Movie</a>
+      {% if session['logging'] == False  %}
+        <a href="/signin" class="right"
+          ><img
+            src="/static/icon.png"
+            alt="pr-sample28"
+            width="35"
+            height="40"
+          />Sign in</a
+        >    
+      {% else %}
+      <a href="/signout" class="right">Sign Out</a>
+      <a href="/profile" class="right">Welcome {{ session['name'] }}</a>
+      {% endif %} 
     </div>
+    </div>
+    <font size="10">
+   <div class="heada"> Featured Movies </div>
+   </font>
 
-    <div class="container" my="3">
-      <table class="table">
+
+    <figure class="snip1527">
+      <div class="gfg">
+      <div class="image"><img src="{{ one['poster'] }}" alt="pr-sample23" /></div>
+      </div>
+      <a href="/search/{{one['title']}}"> <button>Search On the Web </button></a>
+    </figure>
+
+    <figure class="snip1527">
+      <div class="image"><img src="{{ two['poster'] }}" alt="pr-sample23" /></div>
+
+      <a href="/search/{{one['title']}}"> <button>Search On the Web </button></a>
+    </figure>
+
+    <figure class="snip1527">
+      <div class="image"><img src="{{three['poster'] }}" alt="pr-sample23" /></div>
+
+      <a href="/search/{{one['title']}}"> <button>Search On the Web </button></a>
+    </figure>
+
+
+    <figure class="snip1527">
+      <div class="image"><img src="{{ four['poster'] }}" alt="pr-sample23" /></div>
+      <a href="/search/{{one['title']}}"> <button>Search On the Web </button></a>
+    </figure>
+
+    <br>
+    <br>
+
+
+
+    <div class="page-color">
+      <font size="5">
+        
+      <form action="/" method="POST">
+        <div class="dis">
+           Brought to you by
+        </div>
+
+        <div> Tell us what you like </div>
+          
+        <div class="contaile small-container">
+          <label for="exampleInputEmail1" class="page-color">Movie Name</label>
+          <input type="text" id="moviename" name="moviename" value="Mad Max" />
+        </div>
+        <div >
+          <label> Category </label>
+          <select name="category" id="category">
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="animation">Animation</option>
+            <option value="crime">Crime</option>
+            <option value="documentary">Documentary</option>
+            <option value="drama">Drama</option>
+            <option value="family">Family</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="history">History</option>
+            <option value="horror">Horror</option>
+            <option value="music">Music</option>
+            <option value="mystery">Mystery</option>
+            <option value="romance">Romance</option>
+            <option value="romance">Romance</option>
+            <option value="science fiction">Science Fiction</option>
+            <option value="thriller">Thriller</option>
+            <option value="tv movie">TV Movie</option>
+            <option value="war">War</option>
+            <option value="western">Western</option>
+          </select>
+          <br><br>
+        </div>
+        <div class="contaile small-container">
+          <label for="exampleInputEmail1" class="page-color">Rating(Out of 5</label>
+          <input type="number" id="rating" name="rating" value="5" />
+        </div>
+        <button type="submit" class="button2">Submit</button>
+      </form>
+       <a href="/clear"><button class="button2">Clear Table</button></a>
+    </div>
+  </font>
+  <font size="4">
+    <div my="3" class="page-color">
+      <table border="1" align="center" cellspacing="15">
         <thead>
           <tr>
             <th scope="col">Seriel Number</th>
@@ -132,6 +143,7 @@
         </tbody>
       </table>
     </div>
+  </font>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -146,5 +158,37 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-  </body>
+    </body>
+    {% else %}
+    <body style="background-image: url('../static/back.jpg')">
+      <div class="topnav">
+        <a class="active" href="/">CineMaster</a>
+        <a href="/watchlist">Suggested for me</a>
+        <a href="/error">My Watch List</a>
+        <a href="/add">Add a Movie</a>
+        {% if session['logging'] == False  %}
+        <a href="/signin" class="right"
+          ><img
+            src="/static/icon.png"
+            alt="pr-sample28"
+            width="35"
+            height="40"
+          />Sign in</a
+        >    
+      {% else %}
+      <a href="/signout" class="right">Sign Out</a>
+      <a href="/profile" class="right">Welcome {{ session['name'] }}</a>
+      {% endif %} 
+    </div>
+      </div>
+      <font size=8px><div class="page-color">
+        Loading.... It wont take more than 2 minutes . 
+      </font>
+<div class="loader"> </div>
+    <font size="5px">
+      <div> Thanks for your patience</div>
+    </font>  
+    </div>  
+    </body>
+  {% endif %}
 </html>

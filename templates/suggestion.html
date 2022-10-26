@@ -1,0 +1,104 @@
+{% extends 'base.html' %} {% block main %}
+<h1 class="page-color">
+  Movies from Our Algorithm
+  <br />{% for keys in check.keys() %} {% if loop.index <= 15 %}
+  <figure class="snip1527">
+    <div class="image">
+      <img
+        src="https://image.tmdb.org/t/p/original/{{ poster[keys] }}"
+        alt="pr-sample23"
+      />
+    </div>
+    <a href="/watchlist/{{keys}}"><button>ADD TO WATCHLIST</button></a>
+  </figure>
+  {% endif %} {% endfor %}
+</h1>
+
+<h1 class="page-color">
+  <hr />
+  <hr />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Movies Suggested Using Library
+  funtion <br />
+</h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />{% for i in lib %}
+
+<figure class="snip1527">
+  <div class="image">
+    <img
+      src="https://image.tmdb.org/t/p/original/{{ i['poster'] }}"
+      alt="pr-sample23"
+    />
+  </div>
+  <a href="/watchlist/{{i['name']}}"><button>ADD TO WATCHLIST</button></a>
+</figure>
+{% endfor %}
+
+<h1 class="page-color">
+  <hr />
+  <hr />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Movies Suggested Using User Based
+  Model <br />
+</h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />{% for i in pheu %}
+
+<figure class="snip1527">
+  <div class="image">
+    <img
+      src="https://image.tmdb.org/t/p/original/{{ i['poster'] }}"
+      alt="pr-sample23"
+    />
+  </div>
+  <a href="/watchlist/{{i['name']}}"><button>ADD TO WATCHLIST</button></a>
+</figure>
+{% endfor %} {% endblock %}

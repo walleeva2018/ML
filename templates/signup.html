@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block main %}
+<div class="login">
+  <div class="login-triangle"></div>
+
+  <h2 class="login-header">Log in</h2>
+  <h3 class="red">{{ reply }}</h3>
+  <form class="login-container" method="POST">
+    <p><input type="email" placeholder="Email" name="email" /></p>
+    <p><input type="text" placeholder="Name" name="name" /></p>
+    <p><input type="password" placeholder="Password" name="password" /></p>
+    <p><input type="submit" value="Sign Up" /></p>
+    Already Have an account? {{' '+ ' '+' ' +' ' + ' '}}<a href="/signin"
+      >Login</a
+    >
+  </form>
+</div>
+
+{% endblock %}

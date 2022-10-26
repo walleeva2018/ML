@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles.css') }}"
+    />
+
+    <title>CineMaster!</title>
+  </head>
+  <body style="background-image: url('../static/back.jpg')">
+    <div class="topnav">
+      <a class="active" href="/">CineMaster</a>
+      <a href="/watchlist/Kwurt">My Watch List</a>
+      <a href="/error">Suggested for Me</a>
+      <a href="/add">Add a Movie</a>
+      {% if session['logging'] == False %}
+      <a href="/signin" class="right"
+        ><img
+          src="/static/icon.png"
+          alt="pr-sample28"
+          width="35"
+          height="40"
+        />Sign in</a
+      >
+      {% else %}
+      <a href="/signout" class="right">Sign Out</a>
+      <a href="/profile" class="right">Welcome {{ session['name'] }}</a>
+      {% endif %}
+    </div>
+    {% block main %} {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block main %}
+<h1 class="page-color">
+  {% for i in final %}
+  <figure class="snip1527">
+    <div class="image">
+      <img
+        src="https://image.tmdb.org/t/p/original/{{ i['poster_path'] }}"
+        alt="pr-sample23"
+      />
+    </div>
+    <a href="/search/{{i['title']}}"> <button>Search On the Web</button></a>
+    <a href="/remove/{{i['title']}}">Remove</a>
+  </figure>
+  {% endfor %}
+</h1>
+{% endblock %}

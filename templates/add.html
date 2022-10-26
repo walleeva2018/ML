@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block main %}
+<div class="login">
+  <div class="login-triangle"></div>
+
+  <h2 class="login-header">Add a Movie Be a contibuter</h2>
+  <h3><div class="red">{{reply }}</div></h3>
+  <form class="login-container" method="POST">
+    <p><input type="text" placeholder="Movie Name" name="movie" /></p>
+    <p><input type="text" placeholder="Genre" name="genre" /></p>
+    <p><input type="submit" value="Submit" /></p>
+    Contibuter List {{' '+ ' '+' ' +' ' + ' '}}<a href="/signup">here</a>
+  </form>
+</div>
+
+{% endblock %}
