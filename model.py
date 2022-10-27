@@ -1,4 +1,6 @@
 from tmdbv3api import TMDb
+
+from database import Database
 tmdb = TMDb()
 tmdb.api_key = 'f658ac98b3201a511d101895c2e23b7b'
 tmdb.language = 'en'
@@ -50,6 +52,7 @@ def doit(movieName,movieCategory):
     discover= Discover()
     myMap={}
     movieCategory=int(movieCategory)
+    get1=movie.search(movieName)
     for k in range(5):
         show = discover.discover_movies({
             'with_genres': movieCategory,
@@ -57,7 +60,6 @@ def doit(movieName,movieCategory):
         })
         for i in show:
             myMap[i['title']]=0
-        get1=movie.search(movieName)
         get2=get1[0]['overview']
         for j in show:
             put=j['overview']
@@ -75,6 +77,40 @@ def doit(movieName,movieCategory):
 def sim(moviername):
     movie=Movie()
     return movie.search(moviername)
+
+def gsfa(allMovie):
+    movie=Movie()
+    ula=Database.movie.find({})
+    ma_score=-1
+    film=""
+    genre=""
+    language=""
+    for i in allMovie:
+        get1=movie.search(i.MovieName)
+        ula=Database.movie.find({})
+        for j in ula:
+            
+            get2=get1[0]['overview']
+            get3=j['plot']
+            put2=stem(get2)
+            put3=stem(get3)
+            get_vector=text_to_vector(put2)
+            put_vector=text_to_vector(put3)
+            score=get_cosine(get_vector,put_vector)
+            #print(i.MovieName,j['movie'],score)
+            if ma_score<score:
+                ma_score=score
+                film=j['movie']
+                genre=j['genre']
+                language=j['language']
+    mop=[]
+    mop.append({"film":film,
+                "genre":genre,
+                "language":language,})
+    return mop
+
+
+
 
 
 def justcheck():

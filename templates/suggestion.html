@@ -101,4 +101,19 @@
   </div>
   <a href="/watchlist/{{i['name']}}"><button>ADD TO WATCHLIST</button></a>
 </figure>
-{% endfor %} {% endblock %}
+
+{% endfor %}
+
+<h2 class="page-color">
+  <h3 class="page-color">Suggested From Our Collection</h3>
+  <br />
+  <a href="/search/{{sfa[0]['film'] }}">
+    <h3 class="page-color">{{ sfa[0]['film'] }}</h3>
+  </a>
+  <br />
+  <h3 class="page-color">{{ sfa[0]['genre'] }}</h3>
+  <br />
+  <h3 class="page-color">{{ sfa[0]['language']}}</h3>
+</h2>
+
+{% endblock %}

@@ -59,6 +59,8 @@ def add():
     if request.method=='POST':
         name=request.form.get('movie')
         genre=request.form.get('genre')
+        plot=request.form.get('plot')
+        language=request.form.get('language')
         if( name=="" ):
             return render_template('add.html',reply="Enter a valid movie name")
         if(genre ==""):
@@ -66,7 +68,9 @@ def add():
         user_movie={
             "movie": name,
             "genre": genre,
-            "contributer": session['name']
+            "contributer": session['name'],
+            "plot": plot,
+            "language": language,
         }
         Database.movie.insert_one(user_movie)
         return render_template('add.html',reply="Movie Added succesfully")
@@ -131,6 +135,8 @@ def suggest():
 
         
         a=model.getit(a)
+    if(allMovie):
+        sfa=model.gsfa(allMovie)
     user=Database.user.find({})
     this_user=Database.user.find_one({'email': session['email']})
     score=0
@@ -147,7 +153,7 @@ def suggest():
             if i == j:
                 flist.remove(j)
     pheu=model.get_poster(flist)
-    return render_template('suggestion.html',check=a,poster=poster,lib=lib,pheu=pheu)
+    return render_template('suggestion.html',check=a,poster=poster,lib=lib,pheu=pheu,sfa=sfa)
 
 @app.route("/mylist")
 def movies():
@@ -195,6 +201,11 @@ def remove(name):
         final.append(ok)
     Database.user.update_one({'email':session['email']},{"$set":{"movielist":lula}})
     return render_template('watchlist.html',final=final)
+
+@app.route('/contributer', methods=['GET'])
+def con():
+    movie=Database.movie.find({})
+    return render_template("contributer.html",movie=movie)
 
 
 if __name__ == "__main__":

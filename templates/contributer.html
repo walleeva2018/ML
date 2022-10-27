@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block main %}
+<h3 class="page-color">
+  <ol>
+    {% for i in movie %}
+    <li>{{ i['contributer'] }}</li>
+    {% endfor %}
+  </ol>
+</h3>
+
+{% endblock %}
