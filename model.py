@@ -53,6 +53,8 @@ def doit(movieName,movieCategory):
     myMap={}
     movieCategory=int(movieCategory)
     get1=movie.search(movieName)
+    if(len(get1)==0):
+        get1=movie.search("Its about time")
     for k in range(5):
         show = discover.discover_movies({
             'with_genres': movieCategory,
@@ -87,9 +89,10 @@ def gsfa(allMovie):
     language=""
     for i in allMovie:
         get1=movie.search(i.MovieName)
+        if(len(get1)==0):
+            get1=movie.search("Its about time")
         ula=Database.movie.find({})
         for j in ula:
-            
             get2=get1[0]['overview']
             get3=j['plot']
             put2=stem(get2)
@@ -157,6 +160,8 @@ def wPoster(name):
 def lib_get(name):
     movie=Movie()
     search = movie.search(name)
+    if(len(search)==0):
+        search=movie.search("Its About Time")
     recommendations = movie.recommendations(search[0].id)
     return recommendations[0]
 
