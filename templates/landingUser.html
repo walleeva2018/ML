@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block main %} {{ fig.show() }}
+
+<div>
+  <div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Complain Box</h2>
+    <h3 class="red">{{reply }}</h3>
+    <form class="login-container" method="POST">
+      <p><input type="text" placeholder="Enter Your name" name="name" /></p>
+      <p><input type="text" placeholder="Complain" name="complain" /></p>
+      <p><input type="submit" value="Log in" /></p>
+      See the running project {{' '+ ' '+' ' +' ' + ' '}}<a href="/landingGov"
+        >Here</a
+      >
+    </form>
+  </div>
+</div>
+{% endblock %}

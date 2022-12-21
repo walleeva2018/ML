@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block main %}
+<div class="login">
+  <div class="login-triangle"></div>
+
+  <h2 class="login-header">RDD APPLICATION</h2>
+  <h3 class="red">{{ reply }}</h3>
+  <form class="login-container" method="POST">
+    <p><input type="text" placeholder="Title" name="title" /></p>
+    <p><input type="text" placeholder="Basic Information" name="basic" /></p>
+    <p><input type="text" placeholder="Objective" name="objective" /></p>
+    <p><input type="text" placeholder="Target" name="target" /></p>
+    <p><input type="date" placeholder="Started Time" name="st" /></p>
+    <p><input type="date" placeholder="Ending Time" name="et" /></p>
+    <p><input type="int" placeholder="Cost" name="cost" /></p>
+    <p><input type="text" placeholder="Financing" name="finance" /></p>
+
+    <p><input type="submit" value="SUBMIT" /></p>
+    Wanna see your progress {{' '+ ' '+' ' +' ' + ' '}}<a href="/aproject"
+      >click here</a
+    >
+  </form>
+</div>
+{% endblock %}

@@ -17,6 +17,7 @@ class User:
         session['name']=user['name']
         session['email']=user['email']
         session['password']=user['password']
+        session['role']=user['role']
         return 
 
     def signup(self):
@@ -25,13 +26,9 @@ class User:
            "name": request.form.get('name'),
            "email": request.form.get('email'),
            "password": request.form.get('password'),
-           "Phrase": "",
-           "extra": "",
-           "movielist": [],
-           "rating": [],
-           "category": [],
-           "extralist": [],
-           "extramap": {},
+           "role": request.form.get('role'),
+           "a": "",
+           "b": [],
         }
         if user['name'] =="":
             return "Please enter a user name"
@@ -64,4 +61,6 @@ class User:
             else:
                 return "Invalid Password"
         return "Wrong Email"
+
+
 

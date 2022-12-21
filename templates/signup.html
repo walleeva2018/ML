@@ -2,12 +2,25 @@
 <div class="login">
   <div class="login-triangle"></div>
 
-  <h2 class="login-header">Log in</h2>
+  <h2 class="login-header">Sign Up</h2>
   <h3 class="red">{{ reply }}</h3>
   <form class="login-container" method="POST">
     <p><input type="email" placeholder="Email" name="email" /></p>
     <p><input type="text" placeholder="Name" name="name" /></p>
     <p><input type="password" placeholder="Password" name="password" /></p>
+    <p>Chose your Role</p>
+    <br />
+    <input type="radio" id="admin" name="role" value="ADMIN" />
+      <label for="admin">ADMIN</label><br />
+    <br />
+      <input type="radio" id="government" name="role" value="GOVERNMENT" />  
+    <label for="government">GOVERNMENT</label><br />
+    <br />
+    <input type="radio" id="agency" name="role" value="AGENCY" />
+      <label for="agency">Agency</label>
+
+    <input type="radio" id="user" name="role" value="USER" />
+      <label for="user">User</label>
     <p><input type="submit" value="Sign Up" /></p>
     Already Have an account? {{' '+ ' '+' ' +' ' + ' '}}<a href="/signin"
       >Login</a

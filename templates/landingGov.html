@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block main %}
+<div>
+  <div>
+    <font size="20">
+   <p align="center"> <div class="white">Project Vs Completion Graph</div></p></font>
+    <p align="center">
+      <img src="/static/sample.png" width="800" height="600" />
+    </p>
+  </div>
+  <table>
+    <caption></caption>
+    <thead>
+      <tr>
+        <th scope="col">Project</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in task %}
+
+      <tr>
+        <td data-label="Account">{{i['name']}}</td>
+        <td data-label="Due Date">{{i['start_date']}}</td>
+        <td data-label="Period">{{i['end_date']}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
