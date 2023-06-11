@@ -1,1 +1,2 @@
-## This Project can suggest movies like movielens but it can be of any language it usese Cosine distance, user similarity and rating based suggestions
+# ML
+This is web app which acts like movielens website but with different website.I used cosine distance, user behaviour and rating based parameter to suggest best fit for any user suggest them depending on their watchlist
